@@ -1,0 +1,21 @@
+.content {
+    position: relative;
+    top: 2%;
+    right: 2%;
+    left: 2%;
+    height: auto;
+}
+
+#func {
+    position: absolute;
+    float: right;
+    right: 2%;
+    width: 50%;
+
+}
+
+#ads {
+    position: absolute;
+    left: 2%;
+    width: 45%;
+}

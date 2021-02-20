@@ -1,10 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    {% block head %}
+    <title>Поиск ресторанов конкурентов</title>
+    {% endblock %}
 </head>
 <body>
-<h1>Hello!</h1>
+{% block content %}
+<div class="content">
+    <div id="ads">
+        <h1>Адреса Бургер Кингов:</h1>
+        {% for bk in bks %}
+            <p><a href="javascript:void(0)" onclick="get_text(this)">{{bk.address}}</a></p>
+        {% empty %}
+            <p>Нет ресторанов!</p>
+        {% endfor %}
+    </div>
+    <div id="func">
+        <p>Выберите ресторан:</p>
+        <form method="post">
+            {% csrf_token %}
+            <input readonly id="address" name="address">
+            <input type="submit" value="Найти конкурентов!" >
+        </form>
+        <p>{{c_len}} конкурент(-ов)</p>
+        {% for c in companies %}
+            <p>{{c.0}}-{{c.1}}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+<script>
+    function get_text(str) {
+        document.getElementById("address").value=str.innerHTML
+    }
+</script>
 </body>
+
 </html>
