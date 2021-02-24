@@ -26,9 +26,9 @@
     </div>
     <div id="func">
         <p>Выберите ресторан:</p>
-        <form method="post" class="form">
+        <form method="post">
             {% csrf_token %}
-            {% bootstrap_form form %}
+
             <input readonly id="address" name="address">
             {% buttons %}
             <input type="submit" value="Найти конкурентов!" >
