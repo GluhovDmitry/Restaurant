@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'food',
     'haversine',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

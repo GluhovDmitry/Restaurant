@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import BurgerKing
 from .get_distances import count_distance
-
+from .forms import Form
 
 def home(request):
     bks = BurgerKing.objects.all()
@@ -16,4 +16,4 @@ def home(request):
         comp_count = len(competitors)
 #   get address and restaurant's name
     companies = [(i[0][4], i[0][1]) for i in competitors]
-    return render(request, 'home.html', {'bks': bks, 'comp_count': comp_count, 'companies': companies})
+    return render(request, 'home.html', {'bks': bks, 'comp_count': comp_count, 'companies': companies, "form": Form})

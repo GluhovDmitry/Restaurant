@@ -1,11 +1,16 @@
+
 {% load static %}
+
+{% load bootstrap4 %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     {% block head %}
-    <title>Поиск ресторанов конкурентов</title>
+    <title>Поиск ресторанов-конкурентов</title>
     {% endblock %}
 </head>
 <body>
@@ -21,10 +26,13 @@
     </div>
     <div id="func">
         <p>Выберите ресторан:</p>
-        <form method="post">
+        <form method="post" class="form">
             {% csrf_token %}
+            {% bootstrap_form form %}
             <input readonly id="address" name="address">
+            {% buttons %}
             <input type="submit" value="Найти конкурентов!" >
+            {% endbuttons %}
         </form>
         <p>{{comp_count}} конкурент(-ов)</p>
         {% for c in companies %}

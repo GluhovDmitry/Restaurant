@@ -16,10 +16,11 @@ gets restaurants from yandex api and puts them into database
 При желании его легко можно раширить (ограничение api запроса - 500 ресторанов).
 
 '''
-from .key import pword
+
 import psycopg2
 import requests
-from key import api_key
+from key import api_key, pword
+
 
 conn = psycopg2.connect(dbname='django_db', user='dima', password=f'{pword}', host='127.0.0.1', port='5432')
 

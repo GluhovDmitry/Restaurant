@@ -20,3 +20,4 @@ class Kfc(models.Model):
     lat = models.FloatField(max_length=255)
     lng = models.FloatField(max_length=255)
     address = models.CharField(max_length=255)
+
