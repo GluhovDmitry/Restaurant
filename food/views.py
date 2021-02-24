@@ -1,19 +1,17 @@
 from django.shortcuts import render
-from .models import Burger_king, Mcdonalds, Kfc
+from .models import BurgerKing
 from .get_distances import count_distance
 
 
 def home(request):
-    bks = Burger_king.objects.all()
-    c_len = 0
+    bks = BurgerKing.objects.all()
+    comp_count = 0
     competitors = []
     if request.method == "POST":
         adrs = request.POST.get('address')
-
         competitors += count_distance('food_mcdonalds', adrs)
         competitors += count_distance('food_kfc', adrs)
-        for i in competitors:
-            print(i)
-        c_len = len(competitors)
-    companies = [(i[0][4],i[0][1]) for i in competitors]
-    return render(request, 'home.html', {'bks': bks, 'c_len': c_len, 'companies': companies})
+        comp_count = len(competitors)
+#   get address and restaurant's name
+    companies = [(i[0][4], i[0][1]) for i in competitors]
+    return render(request, 'home.html', {'bks': bks, 'comp_count': comp_count, 'companies': companies})
