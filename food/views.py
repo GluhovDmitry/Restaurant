@@ -7,8 +7,10 @@ def home(request):
     bks = BurgerKing.objects.all()
     comp_count = 0
     competitors = []
+#   get data from form
     if request.method == "POST":
         adrs = request.POST.get('address')
+#   choose competitors in less than 2 km with func count_distance from get_distances.py
         competitors += count_distance('food_mcdonalds', adrs)
         competitors += count_distance('food_kfc', adrs)
         comp_count = len(competitors)

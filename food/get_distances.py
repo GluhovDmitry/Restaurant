@@ -8,7 +8,7 @@ Then it iterates through competitors restaurants and calculates distance with ha
 
 '''
 
-
+from .key import pword
 from haversine import haversine
 import psycopg2
 
@@ -17,7 +17,7 @@ import psycopg2
 
 
 def count_distance(table_name, address):
-    conn = psycopg2.connect(dbname='django_db', user='dima', password='1', host='127.0.0.1', port='5432')
+    conn = psycopg2.connect(dbname='django_db', user='dima', password=f'{pword}', host='127.0.0.1', port='5432')
     cursor = conn.cursor()
     competitors = []
     cursor.execute(f"SELECT lat, lng FROM food_burgerking WHERE address = '{address}'")
