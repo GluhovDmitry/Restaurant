@@ -1,7 +1,10 @@
 '''
 
 This code connects to database then selects longitude and latitude of the chosen point.
-Then it iterates through competitors restaurants and calculates distance with haversine
+Then it iterates through competitors restaurants and calculates distance with haversine (distance < 2 km).
+
+Код ведет подключение к БД и извлекает долготу и широту выбранной точки.
+Затем итерируется по ресторанам конкурентов и подсчитывает расстояние между точками при помощи модуля haversine.
 
 '''
 
