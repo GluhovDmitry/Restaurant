@@ -1,8 +1,6 @@
 
 {% load static %}
 
-{% load bootstrap4 %}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,28 +13,31 @@
 </head>
 <body>
 {% block content %}
+<header>
+    <a class="logo" href="/">Поиск конкурентов Burger King</a>
+</header>
 <div class="content">
     <div id="ads">
-        <h1>Адреса Бургер Кингов:</h1>
+        <h1>Адреса Burger King:</h1>
+        <ul>
         {% for bk in bks %}
-            <p><a href="javascript:void(0)" onclick="get_text(this)">{{bk.address}}</a></p>
+            <li><a href="javascript:void(0)" onclick="get_text(this)">{{bk.address}}</a></li>
         {% empty %}
-            <p>Нет ресторанов!</p>
+            <li>Нет ресторанов!</li>
         {% endfor %}
+        </ul>
     </div>
     <div id="func">
         <p>Выберите ресторан:</p>
-        <form method="post">
+        <form method="post" class="form">
             {% csrf_token %}
-
             <input readonly id="address" name="address">
-            {% buttons %}
             <input type="submit" value="Найти конкурентов!" >
-            {% endbuttons %}
         </form>
+        <p>У Burger King на {{adrs}}</p>
         <p>{{comp_count}} конкурент(-ов)</p>
         {% for c in companies %}
-            <p>{{c.0}}-{{c.1}}</p>
+        <ul><li>{{c.1}},  {{c.0}}</li></ul>
         {% endfor %}
     </div>
 </div>
@@ -45,6 +46,7 @@
     function get_text(str) {
         document.getElementById("address").value=str.innerHTML
     }
+
 </script>
 </body>
 
